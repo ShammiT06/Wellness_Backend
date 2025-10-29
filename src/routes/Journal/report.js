@@ -1,5 +1,5 @@
 import express from "express"
-import Journals from "../../models/Journal"
+import Journals from "../../models/Journal.js"
 
 const router = express.Router()
 
@@ -42,3 +42,5 @@ router.post("/", async (req, res) => {
         res.status(404).json({ message: "Something Went Wrong" })
     }
 })
+
+export default router
