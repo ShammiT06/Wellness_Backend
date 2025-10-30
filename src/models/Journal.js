@@ -2,6 +2,12 @@ import mongoose from "mongoose";
 
 
 const journal = new mongoose.Schema({
+    UserId:{
+        type:mongoose.Types.ObjectId,
+        ref:"User",
+        required:true
+
+    },
     heading: {
         type: String,
         required: true
@@ -12,7 +18,7 @@ const journal = new mongoose.Schema({
     },
     date: {
         type: Date,
-        required: Date.now()
+        default: Date.now()
     },
     emotions: {
         type: String,

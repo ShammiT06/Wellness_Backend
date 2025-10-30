@@ -8,6 +8,7 @@ const router = express.Router()
 router.post("/", async (req, res) => {
     try {
         const { firstName, lastName, email, password } = req.body
+        console.log(firstName,lastName,email,password)
 
         if (!firstName || !lastName || !email || !password) {
             return res.status(400).json({ message: "All fields are required" })
@@ -36,7 +37,7 @@ router.post("/", async (req, res) => {
 
         const token = jwt.sign({ email: user.email }, process.env.Jwt_secret_key, { expiresIn: "1d" })
 
-        const verificationLink = `http://localhost:4000/api/verify/${token}`
+        const verificationLink = `https://wellness-backend-2-bd5h.onrender.com/api/verify/${token}`
 
 
         const transporter = nodemailer.createTransport({

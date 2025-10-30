@@ -6,11 +6,10 @@ const router = express.Router()
 
 router.post("/", async (req, res) => {
     try {
-        const { heading, description, emotions } = req.body
-        if (!heading || !description || !emotions) {
+        const { UserId,heading, description, emotions } = req.body
+        if (!heading || !description || !emotions ||!UserId) {
             return res.status(400).json("All fields are required")
         }
-
         let score = 0
         switch (emotions) {
             case "Happy":
@@ -19,7 +18,7 @@ router.post("/", async (req, res) => {
             case "Normal":
                 score = 80
                 break
-            case "Unhappy":
+            case "UnHappy":
                 score = 60
                 break
             case "Angry":
@@ -30,7 +29,7 @@ router.post("/", async (req, res) => {
                 break
         }
 
-        const journal = new Journals({ heading, description, emotions, score })
+        const journal = new Journals({ heading, description, emotions, score,UserId })
         await journal.save()
 
 
