@@ -1,5 +1,6 @@
 import express from "express"
 import Journals from "../../models/Journal.js"
+import User from "../../models/User.js"
 
 const router = express.Router()
 
@@ -7,6 +8,7 @@ const router = express.Router()
 router.post("/", async (req, res) => {
     try {
         const { UserId,heading, description, emotions } = req.body
+        console.log(UserId,heading,description,emotions)
         if (!heading || !description || !emotions ||!UserId) {
             return res.status(400).json("All fields are required")
         }

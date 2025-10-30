@@ -8,7 +8,6 @@ const router = express.Router()
 router.post("/", async (req, res) => {
     try {
         const { firstName, lastName, email, password } = req.body
-        console.log(firstName,lastName,email,password)
 
         if (!firstName || !lastName || !email || !password) {
             return res.status(400).json({ message: "All fields are required" })
