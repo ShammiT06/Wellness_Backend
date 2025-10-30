@@ -18,7 +18,7 @@ router.get("/:userId", async (req, res) => {
                 $gte: startDate,
                 $lt: endDate
             }
-        }).populate("UserId", "firstName");
+        }).populate("UserId", "firstName email");
 
         if (journals.length == 0) {
             return res.status(500).json({ message: "No Journal for Today" })
